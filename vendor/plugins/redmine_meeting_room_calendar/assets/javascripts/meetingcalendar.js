@@ -455,7 +455,7 @@
                     author_id:$('#author_id').val(),
                     status_id:$('#issue_status_id').val(),
                     subject:$('#subject').val(),
-                    custom_field_values:{'6':meeting_day,'3':start_time, '4':end_time, '5':$('#meeting_rooms').val()},
+                    custom_field_values:{'3':meeting_day,'0':start_time, '1':end_time, '2':$('#meeting_rooms').val()},
                     event_id:$('#event_id').val(),
                     recur:checked_value},
               success: function(data){
