@@ -28,7 +28,7 @@
             <%=label_tag 'Subject'%><%= text_field_tag :subject,nil,:maxlength => 50 %>
         </div>
         <div class="field">
-            <%= l(:field_status) %><%= collection_select(:issue, :status_id, IssueStatus.find(1, 5, 9), :id, :name) %>
+            <%= l(:field_status) %><%= collection_select(:issue, :status_id, IssueStatus.find(1, 5), :id, :name) %>
         </div>
         <div class="field">
             <%= l(:field_priority) %><%= collection_select(:issue, :priority_id, IssuePriority.all, :id, :name) %>
