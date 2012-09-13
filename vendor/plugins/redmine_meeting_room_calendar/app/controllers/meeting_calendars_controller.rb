@@ -3,12 +3,12 @@ class MeetingCalendarsController < ApplicationController
   before_filter :require_login
   
   def initialize
-         @project_id = "215" #Hard Coded project_id for Book Meeting Room Project 
-         @tracker_id = '9'   #Hard Coded tracker_id for Book Meeting Room Project
+         @project_id = "project" #Hard Coded project_id for Book Meeting Room Project 
+         @tracker_id = '4'   #Hard Coded tracker_id for Book Meeting Room Project
          @custom_field = CustomField.all    
-         @start_time = @custom_field[2].possible_values #Hard Coded custom field value for start times for Book Meeting Room Project
-         @end_time = @custom_field[3].possible_values  #Hard Coded custom field value for end times for Book Meeting Room Project
-         @meeting_rooms=@custom_field[4].possible_values  #Hard Coded custom field value for meeting rooms for Book Meeting Room Project
+         @start_time = @custom_field[0].possible_values #Hard Coded custom field value for start times for Book Meeting Room Project
+         @end_time = @custom_field[1].possible_values  #Hard Coded custom field value for end times for Book Meeting Room Project
+         @meeting_rooms=@custom_field[2].possible_values  #Hard Coded custom field value for meeting rooms for Book Meeting Room Project
   end
 
   def index
@@ -17,7 +17,7 @@ class MeetingCalendarsController < ApplicationController
 
   def create
    recur_meeting = params[:recur].to_i
-   meeting_day   = params[:custom_field_values]["6"]
+   meeting_day   = params[:custom_field_values]["3"]
    meeting_date  = Date.parse(meeting_day)
   
    while recur_meeting > 0
@@ -31,7 +31,7 @@ class MeetingCalendarsController < ApplicationController
        @calendar_issue.status_id   =params[:status_id]
        @calendar_issue.author_id   =params[:author_id]
        custom_fields       = params[:custom_field_values]
-       custom_fields['6']  = meeting_date.strftime("%Y-%m-%d")
+       custom_fields['3']  = meeting_date.strftime("%Y-%m-%d")
        @calendar_issue.custom_field_values=custom_fields
        @calendar_issue.save!
      else
